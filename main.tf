@@ -137,8 +137,9 @@ resource "google_project_iam_member" "ids" {
     "roles/logging.logWriter",
     "roles/monitoring.metricWriter",
   ])
-  role   = each.value
-  member = "serviceAccount:${google_service_account.ids.email}"
+  role    = each.value
+  member  = "serviceAccount:${google_service_account.ids.email}"
+  project = var.project
 }
 
 resource "google_storage_bucket_iam_member" "ids" {
